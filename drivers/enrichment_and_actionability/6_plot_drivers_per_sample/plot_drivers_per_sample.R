@@ -383,21 +383,6 @@ dps_overall_percan <- linx_drivers_high_plot_final %>%
     plot.margin = unit(c(1,0,1,0), 'cm')
     )
 
-# # for summary figure
-# dps_overall_wilcox_results <- ggplot_build(dps_overall_percan)$data[[6]] %>%
-#   select(p.adj) %>%
-#   mutate(cancer_type = cancer_type_order, .before = p.adj)
-# dps_overall_eff_size <- linx_drivers_high_plot_final %>%
-#   group_by(cancer_type, cohort) %>%
-#   summarise(mean_driver = mean(total_drivers), .groups = 'drop') %>%
-#   pivot_wider(., names_from = 'cohort', values_from = 'mean_driver', names_prefix = 'mean_driver_') %>%
-#   mutate(cancer_type = str_remove(cancer_type, pattern = '\\s\\(.+'))
-# 
-# dps_summary_figure <- dps_overall_wilcox_results %>%
-#   inner_join(dps_overall_eff_size, by = 'cancer_type')
-# 
-# write_tsv(dps_summary_figure, file = paste0('/output/path/dps_summary_figure.tsv'))
-
 # ------------------------------------
 
 # calculate the mean drivers per driver type & join to the final table
