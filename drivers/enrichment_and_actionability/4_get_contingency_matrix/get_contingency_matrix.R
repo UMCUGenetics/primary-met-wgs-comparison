@@ -13,9 +13,9 @@ library(tidyverse) # data manipulation and plotting
 
 #========= Path prefixes =========#
 base_dir <- list(
-  hpc='/base/path',
-  mnt='/base/path',
-  umc='/base/path'
+  hpc='/hpc/cuppen/projects/P0025_PCAWG_HMF/drivers',
+  mnt='/home/sascha/hpc_mnt/projects/P0025_PCAWG_HMF/drivers',
+  umc='/home/cog/sbrunner/hpc/cuppen/projects/P0025_PCAWG_HMF/drivers'
 )
 
 for(i in base_dir){
@@ -33,6 +33,12 @@ exclude_hypermutators <- args[3]
 filter_clonality <- args[4]
 clonality <- args[5]
 output_dir <- args[6]
+### del
+# driver_results_date <- '2021_12_03' # panel == 60: 2021_10_25, panel == 70: 2021_12_03
+# driver_clonality_date <- '2021_12_03' # soft: 2021_10_26, strict: 2021_10_29, panel == 70: 2021_12_03
+# exclude_hypermutators <- 'no'
+# filter_clonality <- 'no'
+# clonality <- 'clonal'
 
 # set todays date as the output_date
 output_date <- format(Sys.Date(), '%Y_%m_%d')
@@ -98,7 +104,7 @@ get_contingency_matrix <- function(cancer_type_input, driver_input, gene_input) 
 }
 
 # ------------------------------ METADATA
-metadata <- read_tsv(paste0(base_dir, '/path/to/metadata.tsv')) %>%
+metadata <- read_tsv(paste0(base_dir, '/processed/linx_driver/metadata/metadata.tsv')) %>%
   # select relevant columns
   select(sample_id, cohort, is_metastatic, is_hypermutated, cancer_type, cancer_type_code)
 
@@ -116,25 +122,20 @@ metadata <- metadata %>%
 
 # ------------------------------ GENE PANEL
 # read in driver gene panel (important to know total number of genes that are investigated by LINX)
-driver_gene_panel <- read_tsv(file = paste0(base_dir, '/path/to/DriverGenePanel.37.tsv'))
+driver_gene_panel <- read_tsv(file = paste0(base_dir, '/processed/linx_driver/metadata/DriverGenePanel.37.tsv'))
 
 # ------------------------------ FILTERED LINX DRIVERS
-linx_drivers <- read_tsv(paste0(base_dir, '/path/to/', 
+linx_drivers <- read_tsv(paste0(base_dir, '/processed/linx_driver/2_combine_driver_catalogs/results/', 
                                 driver_results_date ,'/linx_drivers.tsv'),
                          col_names = TRUE)
 
 # right join the metadata table to only keep the cancer types with enough samples
 linx_drivers_high <- linx_drivers %>%
-  right_join(metadata, by = 'sample_id')
-
-# collapse AMP & PARTIAL_AMP into AMP, DEL & HOM_DISRUPTION into DEL before generating the contingency table
-linx_drivers_high <- linx_drivers_high %>%
-  mutate(driver = fct_collapse(driver, 
-                               AMP = c('AMP', 'PARTIAL_AMP'),
-                               DEL = c('DEL', 'HOM_DISRUPTION')))
+  right_join(metadata, by = c('sample_id', 'cohort', 'cancer_type', 'cancer_type_code'))
 
 # ------------------------------ DRIVER CLONALITY
-driver_clonality <- read_tsv(file = paste0(base_dir, '/path/to/', 
+if (filter_clonality == 'yes') {
+driver_clonality <- read_tsv(file = paste0(base_dir, '/processed/linx_driver/3_parse_driver_clonality/results/', 
                                            driver_clonality_date, '/driver_clonality_clean.tsv'))
 
 # join driver clonality to the linx_driver catalog
@@ -143,15 +144,21 @@ linx_drivers_high <- linx_drivers_high %>%
   mutate(clonality2 = if_else(is.na(clonality2), 'none', clonality2))
 
 # filter clonal / subclonal?
-if (filter_clonality == 'yes') {
   linx_drivers_high <- linx_drivers_high %>%
     filter(clonality2 == clonality | clonality2 == 'none')
 }
+
+# test func
+# get_contingency_matrix('Breast cancer', 'AMP', 'AR')
 
 # define iterators
 all_genes <- unique(driver_gene_panel$gene)
 all_cancers <- unique(metadata$cancer_type)
 all_drivers <- unique(linx_drivers_high$driver)[complete.cases(unique(linx_drivers_high$driver))] # drop NAs
+### test del
+# all_genes <- unique(linx_drivers_high$gene)[1:50]
+# all_cancers <- c('Prostate carcinoma')
+# all_drivers <- c('MUTATION', "AMP")
 
 # initiate list
 driver_contingency_list <- list()
@@ -182,6 +189,9 @@ driver_contingency_df <- do.call(rbind, driver_contingency_list)
 driver_contingency_df <- driver_contingency_df %>%
   mutate(driver = rownames(driver_contingency_df), .before = mut_false_group) %>%
   separate(col = 'driver', into = c('cancer_type', 'driver', 'gene'), sep = '\\.')
+
+
+# output_dir <- paste0(base_dir, '/processed/linx_driver/4_get_contingency_matrix/results/2022_05_19')
 
 # changed output file name based on whether the table includes of excludes hypermutators
 if (filter_clonality == 'yes') {
