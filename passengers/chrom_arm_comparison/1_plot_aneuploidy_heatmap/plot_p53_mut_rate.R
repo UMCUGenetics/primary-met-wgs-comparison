@@ -146,7 +146,7 @@ metadata_wider_is_mutated_combined_plot <- metadata_wider_is_mutated_combined %>
          metastatic_is_mutated_fraction = metastatic_is_mutated / (metastatic_is_mutated + metastatic_non_mutated)) %>%
   mutate(cancer_type = factor(cancer_type, levels = cancer_type_order)) %>%
   pivot_longer(cols = primary_is_mutated_fraction:metastatic_is_mutated_fraction, names_to = 'stadium_is_mutated', values_to = 'fraction') %>%
-  mutate(significance_level = if_else(fisher_pval < 0.05 & stadium_is_mutated == 'primary_is_mutated_fraction', '*', NA_character_))
+  mutate(significance_level = if_else(fisher_pval < 0.01 & stadium_is_mutated == 'primary_is_mutated_fraction', '*', NA_character_))
 
 # plot the histogram facets
 mutated_histogram <- metadata_wider_is_mutated_combined_plot %>%

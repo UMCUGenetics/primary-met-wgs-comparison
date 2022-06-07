@@ -141,7 +141,7 @@ metadata_wider_wgd_combined_plot <- metadata_wider_wgd_combined %>%
          metastatic_wgd_fraction = metastatic_wgd / (metastatic_wgd + metastatic_non_wgd)) %>%
   mutate(cancer_type = factor(cancer_type, levels = cancer_type_order)) %>%
   pivot_longer(cols = primary_wgd_fraction:metastatic_wgd_fraction, names_to = 'stadium_wgd', values_to = 'fraction') %>%
-  mutate(significance_level = if_else(fisher_pval < 0.05 & stadium_wgd == 'primary_wgd_fraction', '*', NA_character_))
+  mutate(significance_level = if_else(fisher_pval < 0.01 & stadium_wgd == 'primary_wgd_fraction', '*', NA_character_))
 
 # plot the histogram facets
 wgd_histogram <- metadata_wider_wgd_combined_plot %>%

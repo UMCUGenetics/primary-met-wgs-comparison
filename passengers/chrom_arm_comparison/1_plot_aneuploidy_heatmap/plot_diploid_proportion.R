@@ -101,7 +101,7 @@ get_wilcox_table <- function(df_input, cancer_type_input, is_wgd = TRUE) {
                                    paired = FALSE,
                                    mu = 0)) %>%
     mutate(cancer_type = cancer_type_input,
-           significance_level = if_else(p.value < 0.05, '*', NA_character_)) %>%
+           significance_level = if_else(p.value < 0.01, '*', NA_character_)) %>%
     select(cancer_type, method, p.value, significance_level)
   
   return(wilcox_table)
