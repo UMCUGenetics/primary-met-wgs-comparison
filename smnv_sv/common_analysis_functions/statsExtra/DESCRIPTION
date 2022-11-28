@@ -1,0 +1,14 @@
+Package: statsExtra
+Type: Package
+Title: Stats for feature selection
+Version: 0.1.0
+Author: Luan N. Nguyen
+Maintainer: Luan N. Nguyen <n.l.nguyen-2@umcutrecht.nl>
+Description: Stats functions used for univariate feature selection when training CUPLR
+Encoding: UTF-8
+LazyData: true
+LinkingTo: Rcpp
+Imports:
+	matrixStats,
+	Rcpp
+RoxygenNote: 7.1.2

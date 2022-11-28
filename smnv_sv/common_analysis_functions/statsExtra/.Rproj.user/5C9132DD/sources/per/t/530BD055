@@ -1,0 +1,24 @@
+{
+    "id": "530BD055",
+    "path": "~/hpc/cuppen/projects/P0013_WGS_patterns_Diagn/CUPs_classifier/processed/cuplr/statsExtra/R/hello.R",
+    "project_path": "R/hello.R",
+    "type": "r_source",
+    "hash": "1133301866",
+    "contents": "",
+    "dirty": false,
+    "created": 1622643580032.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1622643576,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1622643576,
+    "read_only": false,
+    "read_only_alternatives": []
+}
