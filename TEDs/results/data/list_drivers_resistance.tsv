@@ -1,0 +1,48 @@
+gene_driver	cancer_type_code	type_alt
+AR	PRAD	Amp
+PRNCR1	PRAD	Amp
+ESR1	BRCA	coding mutations
+ERBB2	BRCA	Amp
+TP53	PRAD	coding mutations
+AR	PRAD	coding mutations
+EGFR	LUAD	coding mutations
+TLR7	BRCA	coding mutations
+TP53	PRAD	Del
+PIK3CA	BRCA	coding mutations
+KAT6B	PRAD	Amp
+PTEN	PRAD	Del
+ZNF583	BRCA	Amp
+ERBB2	BRCA	coding mutations
+KRAS	OV	coding mutations
+TP53	STAD	coding mutations
+TP53	COREAD	coding mutations
+IHH	LUSC	non-coding mutation
+BRAF	SKCM	coding mutations
+BNC1	BRCA	coding mutations
+ADAM15	PRAD	Amp
+EGFR	LUAD	Amp
+MYEOV	BRCA	Amp
+IGHMBP2	PRAD	Amp
+CEBPZOS	OV	non-coding mutation
+NF1	BRCA	coding mutations
+APC	PRAD	coding mutations
+TP53	LUAD	coding mutations
+CDH1	BRCA	coding mutations
+JAK1	PRAD	coding mutations
+TYMS	BRCA	Amp
+GATA3	BRCA	coding mutations
+ZNF784	BRCA	Amp
+CDKN2A	KIRC	Del
+RB1	PRAD	coding mutations
+ERF	PRAD	coding mutations
+FOXA1	BRCA	coding mutations
+ZMYM3	PRAD	coding mutations
+AC005808.3	BRCA	Amp
+CDK12	PAAD	Amp
+CAMK2N1	BRCA	non-coding mutation
+TSHZ2	BRCA	Amp
+ARID1A	BRCA	coding mutations
+FGFR2	BRCA	non-coding mutation
+TP53	PRAD	non-coding mutation
+NEAT1	PRAD	non-coding mutation
+FOXA1	PRAD	non-coding mutation

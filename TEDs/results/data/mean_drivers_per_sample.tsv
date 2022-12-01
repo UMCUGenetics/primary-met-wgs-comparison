@@ -1,0 +1,73 @@
+	cancer_type	cohort	group	mean_dps	sd_dps
+0	Bladder urothelial carcinoma	Hartwig	-res	8.234375	3.333165186047688
+1	Bladder urothelial carcinoma	Hartwig	+res	8.234375	3.333165186047688
+3	Bladder urothelial carcinoma	PCAWG	+res	7.608695652173912	2.7259548858199563
+4	Breast carcinoma	Hartwig	-res	5.230670103092783	3.1008240427232927
+5	Breast carcinoma	Hartwig	+res	6.3505154639175245	3.093105714287916
+7	Breast carcinoma	PCAWG	+res	5.164179104477612	2.981259875918433
+8	Cervical carcinoma	Hartwig	-res	4.026315789473684	2.573112975379876
+9	Cervical carcinoma	Hartwig	+res	4.026315789473684	2.573112975379876
+11	Cervical carcinoma	PCAWG	+res	3.555555555555556	2.2021973577802645
+12	Cholangiocarcinoma	Hartwig	-res	5.621212121212121	3.5203371845284783
+13	Cholangiocarcinoma	Hartwig	+res	5.621212121212121	3.5203371845284783
+15	Cholangiocarcinoma	PCAWG	+res	4.5	2.7892651361962706
+16	Colorectal carcinoma	Hartwig	-res	4.94524959742351	2.4090349045772688
+17	Colorectal carcinoma	Hartwig	+res	5.718196457326893	2.377205047689749
+19	Colorectal carcinoma	PCAWG	+res	6.2745098039215685	3.4297430304473187
+20	Diffuse large B-cell lymphoma	Hartwig	-res	4.75	2.2213082915965963
+21	Diffuse large B-cell lymphoma	Hartwig	+res	4.75	2.2213082915965963
+23	Diffuse large B-cell lymphoma	PCAWG	+res	4.413461538461538	1.9187909670428869
+24	Esophageal carcinoma	Hartwig	-res	7.578571428571428	2.7196800942399717
+25	Esophageal carcinoma	Hartwig	+res	7.578571428571428	2.7196800942399717
+27	Esophageal carcinoma	PCAWG	+res	6.470588235294117	2.6030578872060564
+28	Glioblastoma multiforme	Hartwig	-res	5.3125	1.5923926292577109
+29	Glioblastoma multiforme	Hartwig	+res	5.3125	1.5923926292577109
+31	Glioblastoma multiforme	PCAWG	+res	5.538461538461538	1.7297117777271729
+32	Hepatocellular carcinoma	Hartwig	-res	4.384615384615385	2.4904039057703717
+33	Hepatocellular carcinoma	Hartwig	+res	4.384615384615385	2.4904039057703717
+35	Hepatocellular carcinoma	PCAWG	+res	2.802083333333333	2.233510034266856
+36	Kidney renal clear cell carcinoma	Hartwig	-res	3.8	1.9944878168031377
+37	Kidney renal clear cell carcinoma	Hartwig	+res	4.1	2.0496139712620667
+39	Kidney renal clear cell carcinoma	PCAWG	+res	2.2293577981651382	1.1517541173015329
+40	Leiomyosarcoma	Hartwig	-res	3.042553191489361	1.6412806082911708
+41	Leiomyosarcoma	Hartwig	+res	3.042553191489361	1.6412806082911708
+43	Leiomyosarcoma	PCAWG	+res	3.2666666666666666	2.250925735484551
+44	Liposarcoma	Hartwig	-res	4.28	1.9261360284258224
+45	Liposarcoma	Hartwig	+res	4.28	1.9261360284258224
+47	Liposarcoma	PCAWG	+res	5.705882352941178	2.5190451038625956
+48	Lung adenocarcinoma	Hartwig	-res	4.7137254901960794	2.618906095480729
+49	Lung adenocarcinoma	Hartwig	+res	5.76078431372549	2.7165342695331947
+51	Lung adenocarcinoma	PCAWG	+res	4.027777777777779	1.949155291198305
+52	Lung squamous cell carcinoma	Hartwig	-res	6.970588235294117	3.379844842392218
+53	Lung squamous cell carcinoma	Hartwig	+res	6.970588235294117	3.379844842392218
+55	Lung squamous cell carcinoma	PCAWG	+res	6.595744680851063	2.6098440272243253
+56	Ovarian serous adenocarcinoma	Hartwig	-res	4.048076923076923	2.6379596693896517
+57	Ovarian serous adenocarcinoma	Hartwig	+res	4.144230769230768	2.563440759751003
+59	Ovarian serous adenocarcinoma	PCAWG	+res	3.7090909090909085	2.069195006110128
+60	Pancreas carcinoma	Hartwig	-res	5.232323232323234	1.7192088998703814
+61	Pancreas carcinoma	Hartwig	+res	5.232323232323234	1.7192088998703814
+63	Pancreas carcinoma	PCAWG	+res	4.967889908256881	1.5960423826963759
+64	Pancreas neuroendocrine	Hartwig	-res	3.941176470588236	2.0588489939856327
+65	Pancreas neuroendocrine	Hartwig	+res	3.941176470588236	2.0588489939856327
+67	Pancreas neuroendocrine	PCAWG	+res	1.7848101265822784	1.8582517706094244
+68	Prostate carcinoma	Hartwig	-res	3.7975	2.3665364961201574
+69	Prostate carcinoma	Hartwig	+res	5.5375	2.721600912849284
+71	Prostate carcinoma	PCAWG	+res	2.379084967320261	1.622240717859229
+72	Skin melanoma	Hartwig	-res	3.914191419141914	2.024493213420189
+73	Skin melanoma	Hartwig	+res	4.425742574257425	1.9649909491397917
+75	Skin melanoma	PCAWG	+res	4.461538461538462	1.9702795470825907
+76	Stomach carcinoma	Hartwig	-res	6.534883720930233	4.153878492899896
+77	Stomach carcinoma	Hartwig	+res	7.372093023255813	4.1405270875299465
+79	Stomach carcinoma	PCAWG	+res	5.872727272727272	3.863670033523325
+80	Thyroid carcinoma	Hartwig	-res	2.9090909090909087	1.715728108915554
+81	Thyroid carcinoma	Hartwig	+res	2.9090909090909087	1.715728108915554
+83	Thyroid carcinoma	PCAWG	+res	1.2045454545454546	0.8512520315051525
+84	Upper respiratory tract carcinoma	Hartwig	-res	5.684210526315789	3.959970400912413
+85	Upper respiratory tract carcinoma	Hartwig	+res	5.684210526315789	3.959970400912413
+87	Upper respiratory tract carcinoma	PCAWG	+res	5.34	3.1403236541893618
+88	Uterus carcinoma	Hartwig	-res	6.34375	2.2231824762220143
+89	Uterus carcinoma	Hartwig	+res	6.34375	2.2231824762220143
+91	Uterus carcinoma	PCAWG	+res	5.5	1.5964900525229957
+92	pancancer	Hartwig	-res	4.949579831932773	2.861905055735656
+93	pancancer	Hartwig	+res	5.6873370037670234	2.8700167462554718
+95	pancancer	PCAWG	+res	4.1400208986415885	2.6944478740808986

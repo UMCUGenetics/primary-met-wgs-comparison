@@ -1,0 +1,17 @@
+# Steps to run dNdScv
+
+# Run the pipeline
+
+conda activate snakemake
+# treatment groups
+snakemake --profile slurm --snakefile run_TEDs_pipeline.py --config i=../data/samples_mechanisms_updated.json o=/hpc/cuppen/projects/P0025_PCAWG_HMF/drivers/processed/resistance/ -drop-metadata --latency-wait 20
+# untreated groups
+snakemake --profile slurm --snakefile run_TEDs_pipeline.py --config i=../data/samples_untreated_updated.json o=/hpc/cuppen/projects/P0025_PCAWG_HMF/drivers/processed/resistance/ -drop-metadata --latency-wait 20 -np
+
+
+# Visualize CNV variants examples
+
+conda activate snakemake
+# run example for visualization
+snakemake --profile slurm --snakefile pipeline_visualization_TEDs_cnv.py --config i=//home/cog/fmartinez/scripts/resistance/data/control_hmf/samples_examples_visualization.json o=/hpc/cuppen/projects/P0025_PCAWG_HMF/drivers/processed/resistance/pipeline_cnv/examples/ --drop-metadata --latency-wait 30 
+# then go to ../../visualize_examples_CNV.ipynb 
