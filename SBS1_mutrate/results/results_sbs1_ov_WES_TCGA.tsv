@@ -1,0 +1,2 @@
+cancer_type	cancer_type_code	subgroup	n_met	n_prim	slope_primary	intercept_primary	rvalue_res_prim	pvalue_res_prim	slope_met	intercept_met	rvalue_res_met	pvalue_res_met	fold_change_met	std_fold_change_met	mean_diff_residual	std_diff_residual	pvalue_diff_distributions
+Ovarian serous adenocarcinoma	OV	WES	101	816	0.2029984269870833	-0.09576586229337991	0.3553438859851966	1.185329849822736e-19	0.3229486540745087	-5.2337527899587	0.47903573071950595	1.1998537263856169e-05	2.0873276127506886	409.3168402147063	2.1317238049059144	1.4336062897982327	0.0

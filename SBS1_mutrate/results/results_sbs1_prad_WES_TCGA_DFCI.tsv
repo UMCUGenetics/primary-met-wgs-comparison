@@ -1,0 +1,2 @@
+cancer_type	cancer_type_code	subgroup	n_met	n_prim	slope_primary	intercept_primary	rvalue_res_prim	pvalue_res_prim	slope_met	intercept_met	rvalue_res_met	pvalue_res_met	fold_change_met	std_fold_change_met	mean_diff_residual	std_diff_residual	pvalue_diff_distributions
+Prostate cancer	PRAD	WES	416	980	0.15010890469680488	1.8657471005641533	0.1417255307390863	0.00011561578515603071	0.11748872874734345	13.996894349927553	0.0552502054934868	0.33068290180795645	2.0873276127506886	409.3168402147063	10.154166888789979	0.3898657847591134	0.0

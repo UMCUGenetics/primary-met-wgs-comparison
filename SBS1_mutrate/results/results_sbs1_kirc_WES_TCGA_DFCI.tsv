@@ -1,0 +1,2 @@
+cancer_type	cancer_type_code	subgroup	n_met	n_prim	slope_primary	intercept_primary	rvalue_res_prim	pvalue_res_prim	slope_met	intercept_met	rvalue_res_met	pvalue_res_met	fold_change_met	std_fold_change_met	mean_diff_residual	std_diff_residual	pvalue_diff_distributions
+Kidney renal clear cell carcinoma	KIRC	WES	35	714	0.09101302000784618	1.115399463374577	0.31620416060298895	6.541252203929342e-14	0.056999557906611556	8.275912008171108	0.11195027328195657	0.5861120689016046	2.0873276127506886	409.3168402147063	5.09909059926716	0.40651788987947307	0.0

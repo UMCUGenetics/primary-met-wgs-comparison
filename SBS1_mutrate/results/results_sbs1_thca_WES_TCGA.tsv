@@ -1,0 +1,2 @@
+cancer_type	cancer_type_code	subgroup	n_met	n_prim	slope_primary	intercept_primary	rvalue_res_prim	pvalue_res_prim	slope_met	intercept_met	rvalue_res_met	pvalue_res_met	fold_change_met	std_fold_change_met	mean_diff_residual	std_diff_residual	pvalue_diff_distributions
+Thyroid carcinoma	THCA	WES	19	976	0.0462477576597109	0.3605787368930562	0.29869384669410376	1.4973111628213449e-16	0.0609465851233694	2.656011809718916	0.21224390676943194	0.4663277734694159	2.0873276127506886	409.3168402147063	3.1862711009263753	0.17567562826872626	0.0

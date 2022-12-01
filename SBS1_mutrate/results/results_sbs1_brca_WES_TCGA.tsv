@@ -1,0 +1,2 @@
+cancer_type	cancer_type_code	subgroup	n_met	n_prim	slope_primary	intercept_primary	rvalue_res_prim	pvalue_res_prim	slope_met	intercept_met	rvalue_res_met	pvalue_res_met	fold_change_met	std_fold_change_met	mean_diff_residual	std_diff_residual	pvalue_diff_distributions
+Breast carcinoma	BRCA	WES	600	2000	0.1348972316666277	4.114359372077809	0.1920938761645637	6.21142020136623e-14	0.16839988611289075	9.34683322656416	0.20280083451085645	1.4561439604012133e-05	1.4974149878374035	0.11002322765599616	7.262937760320475	0.4004128821206249	0.0

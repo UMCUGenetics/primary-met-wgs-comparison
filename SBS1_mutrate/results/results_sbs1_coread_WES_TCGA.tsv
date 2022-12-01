@@ -1,0 +1,2 @@
+cancer_type	cancer_type_code	subgroup	n_met	n_prim	slope_primary	intercept_primary	rvalue_res_prim	pvalue_res_prim	slope_met	intercept_met	rvalue_res_met	pvalue_res_met	fold_change_met	std_fold_change_met	mean_diff_residual	std_diff_residual	pvalue_diff_distributions
+Colorectal carcinoma	COREAD	WES	367	634	0.4530295212931957	27.78567645161957	0.22308398596399978	8.81445443413065e-07	0.5603301670552632	22.015172009247408	0.33055188819562425	1.962826464554272e-08	2.0873276127506886	409.3168402147063	0.7325649977531423	1.2824225880939415	0.0
