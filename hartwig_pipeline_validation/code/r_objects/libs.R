@@ -3,14 +3,14 @@
 if (!require("devtools")) install.packages("devtools"); library(devtools) # installing from other sources
 if (!require("googlesheets4")) install.packages("googlesheets4"); library(googlesheets4) # interact with google sheets
 ### Data manipulation
-if (!require("tidyverse")) install.packages("tidyverse"); library(tidyverse) # data manipulation and plotting
-if (!require("tidyr")) install.packages("tidyr"); library(naniar) # cleaning data
+if (!require("naniar")) install.packages("naniar"); library(naniar) # cleaning data
 if (!require("tidyr")) install.packages("tidyr"); library(tidyr) # tidy model output
 if (!require("broom")) install.packages("broom"); library(broom) # handling NAs
 if (!require("mutSigExtractor")) devtools::install_github('https://github.com/UMCUGenetics/mutSigExtractor/'); library(mutSigExtractor) # reading and manipulating VCF files
 if (!require("matrixTests")) install.packages("matrixTests"); library(matrixTests) # needed for mutSigExtractor
 if (!require("lsa")) install.packages("lsa"); library(lsa) # calculate cosine similarity of two vectors
-if (!require("FSA")) install.packages("FSA"); library(FSA) #
+if (!require("FSA")) install.packages("FSA"); library(FSA)
+if (!require("tidyverse")) install.packages("tidyverse"); library(tidyverse) # data manipulation and plotting
 ### Plotting
 if (!require("ggthemes")) install.packages("ggthemes"); library(ggthemes) # plot theme
 if (!require("ggrepel")) install.packages("ggrepel"); library(ggrepel) # handling labels

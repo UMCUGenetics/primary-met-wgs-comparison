@@ -44,12 +44,12 @@ for(i in output_dir){
   }
 }
 
-# create output dir
-dir.create(path = paste0(output_dir, '/06_plot_drivers_per_sample'), recursive = TRUE)
-output_dir <- paste0(output_dir, '/06_plot_drivers_per_sample')
-
 # get current date
 current_date <- format(Sys.Date(), '%Y_%m_%d')
+
+# create output dir
+output_dir <- paste0(output_dir, '/06_plot_drivers_per_sample/', current_date, '/results/plots')
+dir.create(path = paste0(output_dir), recursive = TRUE)
 
 ## ggplot custom themes
 font_add_google(

@@ -48,12 +48,12 @@ for(i in output_dir){
   }
 }
 
-# create output dir
-dir.create(path = paste0(output_dir, '/05_plot_enrichment'), recursive = TRUE)
-output_dir <- paste0(output_dir, '/05_plot_enrichment')
-
 # get todays date
 current_date <- format(Sys.Date(), '%Y_%m_%d')
+
+# create output dir
+output_dir <- paste0(output_dir, '/05_plot_enrichment/', current_date, '/results/plots')
+dir.create(path = paste0(output_dir), recursive = TRUE)
 
 ## custom fonts
 font_add_google(
