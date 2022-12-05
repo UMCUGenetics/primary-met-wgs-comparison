@@ -39,7 +39,7 @@ def get_offset_ages_met(slope_primary,intercept_primary,y_values,x_real,ttype,sb
         l.append(x_real - x_pred)
     return l
     
-def plot_regression(ttype_name, ttype,df_data,lim_max_sbs1=5000,ylim=2000,column="clock_like_number",name="_",sbs="SBS1",title2="",plot_residuals=False):
+def plot_regression(ttype_name, ttype,df_data,lim_max_sbs1=5000,ylim=2000,column="sbs1_count",name="_",sbs="SBS1",title2="",plot_residuals=False):
     fig,ax = plt.subplots(figsize=(3.5,4))
     
     met=df_data[(df_data["cancer_type_code"]==ttype)&(df_data[column]<5000)&(df_data["cohort"]=="Hartwig")&(np.isfinite(df_data[column]))&(np.isfinite(df_data["age"]))]
@@ -116,12 +116,12 @@ def plot_regression(ttype_name, ttype,df_data,lim_max_sbs1=5000,ylim=2000,column
     if pvalue[1] < 0.01 and intercept_met > intercept_primary and rvalue_res_prim>0.1 and rvalue_res_met > 0.1:
         ax.annotate(xy=(2,max_v-200),s=f"x{np.nanmean(fold_change):1.2f} fold change (+{np.nanmean(mut_diff):1.0f} ± {np.nanstd(mut_diff):1.0f} muts)",fontsize=16)
         ax.annotate(xy=(25,max_v-400),s=f"P-value={pvalue[1]:.2e}",fontsize=16)
-    plt.savefig(f'results/figures/{sbs}_regressions/{sbs}_prim_vs_met_{ttype}{name.replace("/","__")}.pdf', dpi=800,bbox_inches="tight")
+    plt.savefig(f'../results/figures/{sbs}_regressions/{sbs}_prim_vs_met_{ttype}{name.replace("/","__")}.pdf', dpi=800,bbox_inches="tight")
     if plot_residuals:
         plot_residuals(ttype_name,ttype,residuals_met,residuals_primary,name,sbs)
     return slope_primary,intercept_primary, slope_met,  intercept_met, np.nanmean(mut_diff), np.nanstd(mut_diff), np.nanmean(fold_change),np.nanstd(fold_change), len(residuals_met),len(primary), pvalue[1],pvalue_res_met,rvalue_res_met, pvalue_res_prim,rvalue_res_prim
 
-def plot_regression_combined(df_data,lim_max_sbs1=5000,ylim=2000,column="clock_like_number",name="_",sbs="SBS1",ttypes=ttypes,col_lim=5000,title2=""):
+def plot_regression_combined(df_data,lim_max_sbs1=5000,ylim=2000,column="sbs1_count",name="_",sbs="SBS1",ttypes=ttypes,col_lim=5000,title2=""):
     fig,ax = plt.subplots(figsize=(30,12))
     gs = gridspec.GridSpec(figure=fig, ncols=8, nrows=3)
     gs.update(hspace=0.5, wspace=0.5)
@@ -133,7 +133,7 @@ def plot_regression_combined(df_data,lim_max_sbs1=5000,ylim=2000,column="clock_l
         met=df_data[(df_data["cancer_type"]==ttype)&(df_data[column]<col_lim)&(df_data["cohort"]=="Hartwig")&(np.isfinite(df_data[column]))&(np.isfinite(df_data["age"]))]
         primary=df_data[(df_data["cancer_type"]==ttype)&(df_data[column]<col_lim)&(df_data["cohort"]=="PCAWG")&(np.isfinite(df_data[column]))&(np.isfinite(df_data["age"]))]
         # if there are less than 5 samples, continue with next cancer type
-        if met.shape[0] <5:
+        if met.shape[0] <5 or primary.shape[0] < 5:
             ax.set_title(ttype+"\n"+title2,fontsize=14)
             continue
         # plot the raw data 
@@ -222,7 +222,7 @@ def plot_regression_combined(df_data,lim_max_sbs1=5000,ylim=2000,column="clock_l
         l_data.append([ttype,ttype_code,slope_primary,intercept_primary, slope_met,  intercept_met, np.nanmean(mut_diff), np.nanstd(mut_diff), 
                        np.nanmean(fold_change), np.nanstd(fold_change),len(residuals_met), len(primary), 
                        pvalue_distributions[1],pvalue_res_met,rvalue_res_met, pvalue_res_prim,rvalue_res_prim,np.nanmedian(offsets),np.nanstd(offsets)])
-    plt.savefig(f'results/figures/{sbs}_regressions/combined_{sbs}_prim_vs_met_{name}.pdf', dpi=800,bbox_inches="tight")
+    plt.savefig(f'../results/figures/{sbs}_regressions/combined_{sbs}_prim_vs_met_{name}.pdf', dpi=800,bbox_inches="tight")
     df_stats = pd.DataFrame(l_data,columns=["cancer_type","cancer_type_code","slope_primary","intercept_primary","slope_met","intercept_met",
                                   "mean_diff_residual","std_diff_residual","fold_change_met","std_fold_change_met","n_met","n_prim","pvalue",
                                   "pvalue_res_met","rvalue_res_met", "pvalue_res_prim","rvalue_res_prim","median_offset_ages","std_offset_ages"])
@@ -232,7 +232,7 @@ def plot_regression_combined(df_data,lim_max_sbs1=5000,ylim=2000,column="clock_l
     
 
 # Function that enables the inclusion and visualization of samples from other cohorts
-def plot_regression_with_independent(ttype_name,ttype,df_data,primary_df_independent,met_df_independent,lim_max_sbs1=5000,ylim=2000,column="clock_like_number",name="_",sbs="SBS1",title2="",join=True,plot_regression_met=False,plot_regression_primary=False,exome=False,plot_stats=True):
+def plot_regression_with_independent(ttype_name,ttype,df_data,primary_df_independent,met_df_independent,lim_max_sbs1=5000,ylim=2000,column="sbs1_count",name="_",sbs="SBS1",title2="",join=True,plot_regression_met=False,plot_regression_primary=False,exome=False,plot_stats=True):
     fig,ax = plt.subplots(figsize=(4,4))
     plot_stats = plot_stats or exome
     met=df_data[(df_data["cancer_type_code"]==ttype)&(df_data[column]<5000)&(df_data["cohort"]=="Hartwig")&(np.isfinite(df_data[column]))&(np.isfinite(df_data["age"]))]
@@ -346,7 +346,7 @@ def plot_regression_with_independent(ttype_name,ttype,df_data,primary_df_indepen
     pvalue=st.mannwhitneyu(residuals_pr_indepenent,residuals_pr_depenent,alternative="two-sided")
     print ("Pvalue primary ",pvalue,np.mean(residuals_pr_indepenent),np.mean(residuals_pr_depenent))
     ax.set_ylabel(f"{sbs} mutations",fontsize=16)
-    plt.savefig(f'results/figures/{sbs}_regressions/{sbs}_prim_vs_met_{name}.pdf', dpi=800,bbox_inches="tight")
+    plt.savefig(f'../results/figures/{sbs}_regressions/{sbs}_prim_vs_met_{name}.pdf', dpi=800,bbox_inches="tight")
 
     return slope_primary,intercept_primary, slope_met,  intercept_met, np.nanmean(o), np.nanstd(o), np.nanmean(p), np.nanmean(residuals_met), len(residuals_met), len(primary), pvalue[1],pvalue_res_met,rvalue_res_met, pvalue_res_prim,rvalue_res_prim
 
@@ -411,7 +411,7 @@ def cell_division_rate_increase(df_stats,df_data,xerr=True,title="",column_y="sb
     
     ax.set_title(title,fontsize=16)
     
-    plt.savefig(f'results/figures/turnover_met_prim_{name}.pdf', dpi=800,bbox_inches="tight")
+    plt.savefig(f'../results/figures/turnover_met_prim_{name}.pdf', dpi=800,bbox_inches="tight")
     return slope,intercept,rvalue,pvalue,pm_s
 
 def cell_division_rate_increase_external(df_stats,df_data,column_y="SBS1_genome_wide",column_x="mean_diff_reg_lines",std_x="std_diff_reg_lines",xlabel="Estimated difference SBS1 burden (met - prim.)",name="",ylabel="SBS1 muts. per year \n (Alexandrov et al. 2015)",xlim=(-300,400),xerr=False,pearson=True):
@@ -457,5 +457,5 @@ def cell_division_rate_increase_external(df_stats,df_data,column_y="SBS1_genome_
     ax.set_ylabel(ylabel,fontsize=14)
     ax.set_xlabel(xlabel,fontsize=14)
     ax.set_xlim(xlim)
-    plt.savefig(f'results/figures/turnover_met_prim_{name}.pdf', dpi=800,bbox_inches="tight")
+    plt.savefig(f'../results/figures/turnover_met_prim_{name}.pdf', dpi=800,bbox_inches="tight")
     return slope,intercept,rvalue,pvalue,pm_s
