@@ -296,7 +296,8 @@ def plot_regression_with_independent(ttype_name,ttype,df_data,primary_df_indepen
     # Annotate number of mutations per year
     max_age=int(np.max([list(met["age"])+list(primary["age"])]))
     min_age=int(np.min([list(met["age"])+list(primary["age"])]))
-    o,p,prop=get_calculate_mutations_year(slope_primary,intercept_primary,slope_met, intercept_met,xseq[40:80+1])
+    mut_diff,fold_change,prop=get_calculate_mutations_year(slope_primary,intercept_primary,slope_met, intercept_met,xseq[40:80+1])
+    
     # compute differences in residuals distributions
     # get top most mutated, compared to lowly
     x_raw=list(met["age"])
@@ -310,7 +311,7 @@ def plot_regression_with_independent(ttype_name,ttype,df_data,primary_df_indepen
     except:
         return []
     if plot_stats and (pvalue[1] < 0.01 and intercept_met > intercept_primary):
-        ax.annotate(xy=(2,max_v-5),s=f"x{np.nanmean(p):1.2f} fold change (+{np.nanmean(o):1.0f} ± {np.nanstd(o):1.0f} muts)",fontsize=16)
+        ax.annotate(xy=(2,max_v-5),s=f"x{np.nanmean(fold_change):1.2f} fold change (+{np.nanmean(mut_diff):1.0f} ± {np.nanstd(mut_diff):1.0f} muts)",fontsize=16)
         ax.annotate(xy=(25,max_v-10),s=f"P-value={pvalue[1]:.2e}",fontsize=16)
 
     # plot the points of independent study   
@@ -334,8 +335,8 @@ def plot_regression_with_independent(ttype_name,ttype,df_data,primary_df_indepen
     x_raw=list(met["age"])
     y_raw=list(met[column])
     residuals_met_depenent = [y_raw[i] - (value*slope_met + intercept_met) for i,value in enumerate(x_raw)]
-    pvalue=st.mannwhitneyu(residuals_met_indepenent,residuals_met_depenent,alternative="two-sided")
-    print ("Pvalue met ",pvalue,np.mean(residuals_met_indepenent),np.mean(residuals_met_depenent))
+    pvalue_=st.mannwhitneyu(residuals_met_indepenent,residuals_met_depenent,alternative="two-sided")
+    print ("Pvalue met ",pvalue_,np.mean(residuals_met_indepenent),np.mean(residuals_met_depenent))
     
     x_raw=list(primary_df_independent["age"])
     y_raw=list(primary_df_independent[column])
@@ -343,12 +344,12 @@ def plot_regression_with_independent(ttype_name,ttype,df_data,primary_df_indepen
     x_raw=list(primary["age"])
     y_raw=list(primary[column])
     residuals_pr_depenent = [y_raw[i] - (value*slope_primary + intercept_primary) for i,value in enumerate(x_raw)]
-    pvalue=st.mannwhitneyu(residuals_pr_indepenent,residuals_pr_depenent,alternative="two-sided")
-    print ("Pvalue primary ",pvalue,np.mean(residuals_pr_indepenent),np.mean(residuals_pr_depenent))
+    pvalue_=st.mannwhitneyu(residuals_pr_indepenent,residuals_pr_depenent,alternative="two-sided")
+    print ("Pvalue primary ",pvalue_,np.mean(residuals_pr_indepenent),np.mean(residuals_pr_depenent))
     ax.set_ylabel(f"{sbs} mutations",fontsize=16)
     plt.savefig(f'../results/figures/{sbs}_regressions/{sbs}_prim_vs_met_{name}.pdf', dpi=800,bbox_inches="tight")
 
-    return slope_primary,intercept_primary, slope_met,  intercept_met, np.nanmean(o), np.nanstd(o), np.nanmean(p), np.nanmean(residuals_met), len(residuals_met), len(primary), pvalue[1],pvalue_res_met,rvalue_res_met, pvalue_res_prim,rvalue_res_prim
+    return slope_primary,intercept_primary, slope_met,  intercept_met, np.nanmean(mut_diff), np.nanstd(mut_diff), np.nanmean(fold_change), np.nanstd(fold_change), len(residuals_met), len(primary), float(pvalue[1]),pvalue_res_met,rvalue_res_met, pvalue_res_prim,rvalue_res_prim
 
 def ci95(grp):
     return np.nanpercentile(grp,95)
