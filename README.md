@@ -28,3 +28,9 @@ Somatic variant calls, gene driver lists, copy number profiles and other core da
 
 ### access Hartwig data
 Metastatic WGS data and metadata from the Hartwig Medical Foundation are freely available for academic use through standardized procedures. Request forms can be found at https://www.hartwigmedicalfoundation.nl/en/data/data-acces-request/
+
+### Supplementary Information
+
+Supplementary Tables from the manuscript include relevant information to reproduce the analysis displayed in the manuscript. 
+
+The mutational profile and the pairwise similarity of all extracted mutational signatures can be found in https:///zenodo.org/record/7396538 and Supp. Data 1.  
