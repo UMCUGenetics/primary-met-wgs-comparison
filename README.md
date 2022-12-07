@@ -17,7 +17,7 @@ Analysis type
     ├── figures/     # raw figures
     
 ├── README.md        # this file
-└── environment_analysisA.yaml # Anaconda environment YAML file for specific analysis "A"
+└── environment_analysisA.yaml # Anaconda environment YAML file for specific analysis "karyotype", "driver_enrichment_and_actionability" & "hartwig_pipeline_validation"
 └── environment_analysisB.yaml # Anaconda environment YAML file for specific analysis "B"
 ```
 
