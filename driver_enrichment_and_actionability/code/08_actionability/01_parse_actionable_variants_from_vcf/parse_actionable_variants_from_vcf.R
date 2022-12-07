@@ -46,7 +46,7 @@ output_dir <- args[3]
 # read in amino acid code table
 amino_acids <- read_tsv(file = paste0(base_dir, '/data/external/amino_acids.tsv'))
 
-# create names vector of three letter + single letter aa code pairs
+# create named vector of three letter + single letter aa code pairs
 # (the substitute string must be in the value slot, not the name slot)
 amino_acids <- setNames(amino_acids$short, amino_acids$abbr)
 
@@ -61,7 +61,7 @@ vcf <- mutSigExtractor::variantsFromVcf(vcf.file = purple_hmf_input,
 # extract SNPEff gene annotation from the info column
 info <- mutSigExtractor::getInfoValues(vcf$info, keys = c('ANN', 'TIER'))
 
-# test del split ANN
+# split ANN
 info <- info %>%
   separate(., col = 'ANN', into = str_c('transcript_', 1:1000), sep = ',')
 
@@ -89,8 +89,6 @@ vcf <- vcf %>%
                                                   amino_acids))
 
 # add the sample name as a separate column
-# vcf <- vcf %>%
-#   mutate(sample_id = 'CPCT02080048T', .before = gene)
 vcf <- vcf %>%
   mutate(sample_id = sample, .before = gene)
 
@@ -99,7 +97,7 @@ vcf_final <- vcf %>%
   select(sample_id, gene, var_type, intron_exon_rank, protein_residue_change) %>%
   distinct()
 
-# on hpc
+# write to disk
 write.table(vcf_final, 
             file = paste0(output_dir, sample, '_actionable_variants.temp'),
             sep = '\t', quote = FALSE, append = FALSE, row.names = FALSE,
