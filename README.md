@@ -18,7 +18,8 @@ Analysis type
     
 ├── README.md        # this file
 └── environment_analysisA.yaml # Anaconda environment YAML file for specific analysis "karyotype", "driver_enrichment_and_actionability" & "hartwig_pipeline_validation"
-└── environment_analysisB.yaml # Anaconda environment YAML file for specific analysis "B"
+└── environment_analysisB.yaml # Anaconda environment YAML file for specific analysis "SBS1_mutrate" and "TEDs"
+└── environment_snakemake.yaml # Anaconda environment YAML file for snakemake scripts
 ```
 
 ## Data access
