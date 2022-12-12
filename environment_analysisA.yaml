@@ -1,4 +1,4 @@
-name: pcawg_hartwig
+name: environmentA
 channels:
   - bioconda
   - conda-forge
@@ -506,4 +506,4 @@ dependencies:
   - zeromq=4.3.4=h2531618_0
   - zlib=1.2.13=h166bdaf_4
   - zstd=1.5.2=ha4553b6_0
-prefix: /home/cog/sbrunner/miniconda3/envs/pcawg_hartwig
+prefix: /home/cog/sbrunner/miniconda3/envs/environmentB
