@@ -51,9 +51,9 @@ hartwig_data_dir <- list(
   path=paste0(here::here(), '/data/raw/', data_request_version, '/', metadata_folder)
 )
 
-for(i in hartwig_metadata_dir){
+for(i in hartwig_data_dir){
   if(dir.exists(i)){
-    hartwig_metadata_dir <- i
+    hartwig_data_dir <- i
     break
   }
 }
@@ -65,7 +65,7 @@ metadata <- read_tsv(paste0(base_dir, '/data/processed/metadata/metadata.tsv'),
   rename_with(tolower)
 
 # read the hartwig metadata in (variable setName is important)
-hartwig_metadata <- read_tsv(paste0(hartwig_metadata_dir, '/metadata.tsv')) %>%
+hartwig_metadata <- read_tsv(paste0(base_dir, '/data/processed/metadata/hartwig_metadata.tsv')) %>%
   select(hmfSampleId, setName)
 
 # join setName from the hartwig_metadata to the metadata table
