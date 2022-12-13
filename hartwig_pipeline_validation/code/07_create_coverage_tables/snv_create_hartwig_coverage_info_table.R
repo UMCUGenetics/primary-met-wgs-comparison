@@ -44,10 +44,12 @@ args = commandArgs(trailingOnly=TRUE)
 output_folder <- args[1]
 
 # ------------------------- METADATA
+
 metadata <- read_tsv(paste0(base_dir, '/data/processed/metadata/metadata.tsv'))
 
 # ------------------------- PCAWG specimen table
-specimen <- read_tsv(paste0(base_dir, '/data/external/pcawg_specimen_histology_August2016_v9_complete.tsv'))
+
+specimen <- read_tsv(paste0(base_dir, '/data/external/pcawg_specimen_histology_August2016_v9.tsv'))
 
 # select only cohort and sample_id col
 metadata <- metadata %>%
