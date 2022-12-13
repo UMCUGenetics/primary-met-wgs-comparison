@@ -65,7 +65,7 @@ metadata <- read_tsv(paste0(base_dir, '/data/processed/metadata/metadata.tsv'),
   rename_with(tolower)
 
 # read the hartwig metadata in (variable setName is important)
-hartwig_metadata <- read_tsv(paste0(base_dir, '/data/processed/metadata/hartwig_metadata.tsv')) %>%
+hartwig_metadata <- read_tsv(paste0(base_dir, '/data/processed/metadata/hartwig_sample_metadata.tsv')) %>%
   select(hmfSampleId, setName)
 
 # join setName from the hartwig_metadata to the metadata table
