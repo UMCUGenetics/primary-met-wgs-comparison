@@ -125,7 +125,7 @@ purity_pcawg <- as.data.frame(file_paths$purity_pcawg) %>%
 
 # bind columns, add to the list
 file_paths <- rbind(purple_hartwig, purple_pcawg)
-file_paths[3] <- rbind(purity_hartwig, purity_pcawg)
+file_paths[2] <- rbind(purity_hartwig, purity_pcawg)
 
 rownames(file_paths) <- metadata$sample_id
 
