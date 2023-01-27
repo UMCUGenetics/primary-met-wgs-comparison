@@ -3,7 +3,7 @@
 #SBATCH --output=filter_vcf_%j.out
 #SBATCH --time=02:00:00
 #SBATCH --mem=2G
-#SBATCH --mail-user=s.j.brunner@umcutrecht.nl
+#SBATCH --mail-user=<add_mail?>
 #SBATCH --mail-type=END
 
 ### Description
@@ -94,7 +94,7 @@ zcat $manifest_path | tail -n +2 | while read $manifest_column_names; do
 	#SBATCH --job-name=$(basename $job_file)
 	#SBATCH --time=00:10:00
 	#SBATCH --mem=2G
-	#SBATCH --mail-user=s.j.brunner@umcutrecht.nl
+	#SBATCH --mail-user=<add_mail>
 	#SBATCH --mail-type=FAIL
 
 	zcat $input_vcf | \\
@@ -112,7 +112,7 @@ zcat $manifest_path | tail -n +2 | while read $manifest_column_names; do
 			--job-name=$(basename $job_file) \
 			--time=00:10:00 \
 			--mem=2G \
-			--mail-user=s.j.brunner@umcutrecht.nl \
+			--mail-user=<add_mail> \
 			--mail-type=FAIL \
 			$job_file
 	else
