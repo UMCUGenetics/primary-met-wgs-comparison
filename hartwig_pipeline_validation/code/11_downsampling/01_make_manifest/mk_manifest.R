@@ -60,13 +60,18 @@ if (postprocessed_vcf == 'yes') {
   downsampled_file_paths <- list()
   original_file_paths <- list()
   
+  
   ## PURPLE SOMATIC VCF
-  downsampled_file_paths$som_vcf <- with(downsampled_samples,{ paste0(downsampled_data_dir, '/', sample_id, 'T.purple.somatic.postprocessed.vcf.gz') })
-  original_file_paths$som_vcf <- with(original_samples,{ paste0(original_data_dir, '/data_request/somatics/', sample_id,'/purple/', sample_id, '.purple.somatic.vcf.gz') }) 
+  downsampled_file_paths$som_vcf <- with(downsampled_samples,{ paste0(downsampled_data_dir, '/', patient_id,'/', 'purple/', patient_id, 'T.purple.somatic.postprocessed.vcf.gz') }) # pre-SAGE VCFs: purple/
+  downsampled_file_paths$som_vcf_sage_filtered <- with(downsampled_samples,{ paste0(downsampled_data_dir, '/', patient_id,'/', 'purple_downsampled/', patient_id, 'T.purple.somatic.postprocessed.vcf.gz') }) # SAGE filtered VCFs: purple_downsampled/
+  original_file_paths$som_vcf <- with(original_samples,{ paste0(original_data_dir, '/DR-104-update4/somatics/', sample_id,'/purple/', sample_id, '.purple.somatic.vcf.gz') }) 
+  original_file_paths$som_vcf_sage_filtered <- with(original_samples,{ paste0(original_data_dir, '/DR-104-update4/somatics/', sample_id,'/purple/', sample_id, '.purple.somatic.vcf.gz') }) 
   
   ## PURPLE SV VCF
-  downsampled_file_paths$sv_vis_data <- with(downsampled_samples,{ paste0(downsampled_data_dir, '/', sample_id,'/', 'linx_downsampled/', sample_id, 'T.linx.vis_sv_data.tsv') })
-  original_file_paths$sv_vis_data <- with(original_samples,{ paste0(original_data_dir, '/data_request/somatics/', sample_id,'/linx/', sample_id, '.linx.vis_sv_data.tsv') })
+  downsampled_file_paths$sv_vis_data <- with(downsampled_samples,{ paste0(downsampled_data_dir, '/', patient_id,'/', 'linx/', patient_id, 'T.linx.vis_sv_data.tsv') }) # pre-SAGE VCFs: linx/
+  downsampled_file_paths$sv_vis_data_sage_filtered <- with(downsampled_samples,{ paste0(downsampled_data_dir, '/', patient_id,'/', 'linx_downsampled/', patient_id, 'T.linx.vis_sv_data.tsv') }) # SAGE filtered VCFs: linx_downsampled/
+  original_file_paths$sv_vis_data <- with(original_samples,{ paste0(original_data_dir, '/DR-104-update5/somatics/', sample_id,'/linx/', sample_id, '.linx.vis_sv_data.tsv') })
+  original_file_paths$sv_vis_data_sage_filtered <- with(original_samples,{ paste0(original_data_dir, '/DR-104-update5/somatics/', sample_id,'/linx/', sample_id, '.linx.vis_sv_data.tsv') })
 } else {
   downsampled_data_dir <- paste0(base_dir, '/data/raw')
   original_data_dir <- paste0(base_dir, '/data/raw')
@@ -75,13 +80,18 @@ if (postprocessed_vcf == 'yes') {
   downsampled_file_paths <- list()
   original_file_paths <- list()
   
+  
   ## PURPLE SOMATIC VCF
-  downsampled_file_paths$som_vcf <- with(downsampled_samples,{ paste0(downsampled_data_dir, '/', sample_id,'/', 'purple_downsampled/', sample_id, 'T.purple.somatic.vcf.gz') })
-  original_file_paths$som_vcf <- with(original_samples,{ paste0(original_data_dir, '/data_request/somatics/', sample_id,'/purple/', sample_id, '.purple.somatic.vcf.gz') }) 
+  downsampled_file_paths$som_vcf <- with(downsampled_samples,{ paste0(downsampled_data_dir, '/', patient_id,'/', 'purple/', patient_id, 'T.purple.somatic.vcf.gz') }) # pre-SAGE VCFs: purple/
+  downsampled_file_paths$som_vcf_sage_filtered <- with(downsampled_samples,{ paste0(downsampled_data_dir, '/', patient_id,'/', 'purple_downsampled/', patient_id, 'T.purple.somatic.vcf.gz') }) # SAGE filtered VCFs: purple_downsampled/
+  original_file_paths$som_vcf <- with(original_samples,{ paste0(original_data_dir, '/DR-104-update4/somatics/', sample_id,'/purple/', sample_id, '.purple.somatic.vcf.gz') }) 
+  original_file_paths$som_vcf_sage_filtered <- with(original_samples,{ paste0(original_data_dir, '/DR-104-update4/somatics/', sample_id,'/purple/', sample_id, '.purple.somatic.vcf.gz') }) 
   
   ## PURPLE SV VCF
-  downsampled_file_paths$sv_vis_data <- with(downsampled_samples,{ paste0(downsampled_data_dir, '/', sample_id,'/', 'linx_downsampled/', sample_id, 'T.linx.vis_sv_data.tsv') })
-  original_file_paths$sv_vis_data <- with(original_samples,{ paste0(original_data_dir, '/data_request/somatics/', sample_id,'/linx/', sample_id, '.linx.vis_sv_data.tsv') })
+  downsampled_file_paths$sv_vis_data <- with(downsampled_samples,{ paste0(downsampled_data_dir, '/', patient_id,'/', 'linx/', patient_id, 'T.linx.vis_sv_data.tsv') }) # pre-SAGE VCFs: linx/
+  downsampled_file_paths$sv_vis_data_sage_filtered <- with(downsampled_samples,{ paste0(downsampled_data_dir, '/', patient_id,'/', 'linx_downsampled/', patient_id, 'T.linx.vis_sv_data.tsv') }) # SAGE filtered VCFs: linx_downsampled/
+  original_file_paths$sv_vis_data <- with(original_samples,{ paste0(original_data_dir, '/DR-104-update5/somatics/', sample_id,'/linx/', sample_id, '.linx.vis_sv_data.tsv') })
+  original_file_paths$sv_vis_data_sage_filtered <- with(original_samples,{ paste0(original_data_dir, '/DR-104-update5/somatics/', sample_id,'/linx/', sample_id, '.linx.vis_sv_data.tsv') })
 }
 
 # transform list to data frame, give each row the corresponding sample_id
@@ -122,7 +132,9 @@ file_paths_2 <- list()
 
 # fill the list
 file_paths_2$som_vcf <- file_paths$som_vcf
+file_paths_2$som_vcf_sage_filtered <- file_paths$som_vcf_sage_filtered
 file_paths_2$sv_vis_data <- file_paths$sv_vis_data
+file_paths_2$sv_vis_data_sage_filtered <- file_paths$sv_vis_data_sage_filtered
 
 # transform to data frame
 file_paths_2 <- as.data.frame(file_paths_2)
