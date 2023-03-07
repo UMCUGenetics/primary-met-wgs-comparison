@@ -121,7 +121,7 @@ def plot_regression(ttype_name, ttype,df_data,lim_max_sbs1=5000,ylim=2000,column
         plot_residuals(ttype_name,ttype,residuals_met,residuals_primary,name,sbs)
     return slope_primary,intercept_primary, slope_met,  intercept_met, np.nanmean(mut_diff), np.nanstd(mut_diff), np.nanmean(fold_change),np.nanstd(fold_change), len(residuals_met),len(primary), pvalue[1],pvalue_res_met,rvalue_res_met, pvalue_res_prim,rvalue_res_prim
 
-def plot_regression_combined(df_data,lim_max_sbs1=5000,ylim=2000,column="sbs1_count",name="_",sbs="SBS1",ttypes=ttypes,col_lim=5000,title2=""):
+def plot_regression_combined(df_data,lim_max_sbs1=5000,ylim=2000,column="sbs1_count",name="_",sbs="SBS1",ttypes=ttypes,col_lim=5000,title2="", plot_pearsonr=False):
     fig,ax = plt.subplots(figsize=(30,12))
     gs = gridspec.GridSpec(figure=fig, ncols=8, nrows=3)
     gs.update(hspace=0.5, wspace=0.5)
@@ -217,6 +217,10 @@ def plot_regression_combined(df_data,lim_max_sbs1=5000,ylim=2000,column="sbs1_co
             ax.annotate(xy=(2,max_v-100),s=f"x{np.nanmean(fold_change):1.2f} fold change",fontsize=12)
             ax.annotate(xy=(2,max_v-200),s=f"+{np.nanmean(mut_diff):1.0f} ± {np.nanstd(mut_diff):1.0f} muts",fontsize=12)
             ax.annotate(xy=(25,max_v-300),s=f"P-value={pvalue_distributions[1]:.2e}",fontsize=12)
+        if plot_pearsonr:
+            ax.annotate(xy=(50,100),s=f"Rmet={rvalue_res_met:1.2f}",fontsize=12)
+            ax.annotate(xy=(50,10),s=f"Rparim={rvalue_res_prim:1.2f}",fontsize=12)
+            
         d_diff[ttype]=(mut_diff,y_pred_primary,y_pred_met)
         ttype_code=met["cancer_type_code"].values[0]
         l_data.append([ttype,ttype_code,slope_primary,intercept_primary, slope_met,  intercept_met, np.nanmean(mut_diff), np.nanstd(mut_diff), 
