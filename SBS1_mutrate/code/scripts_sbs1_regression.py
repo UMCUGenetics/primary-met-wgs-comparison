@@ -9,7 +9,7 @@ pd.options.mode.chained_assignment = None  # supress warnings
 default='warn'
 from matplotlib import gridspec
 from statannot import add_stat_annotation
-pd.options.display.max_columns=100
+
 
 ttypes=["Breast carcinoma", "Glioblastoma multiforme", "Colorectal carcinoma", "Esophageal carcinoma",
                           "Stomach carcinoma", "Cholangiocarcinoma", "Hepatocellular carcinoma", "Pancreas carcinoma",
