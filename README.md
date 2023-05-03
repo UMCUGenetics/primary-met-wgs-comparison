@@ -3,7 +3,7 @@
 ## :warning::warning:Repository under construction.
 
 
-This repository contains all the data and analysis related to the preprint: https://www.biorxiv.org/content/10.1101/2022.06.17.496528v1
+This repository contains all the data and analysis related to the manuscript: https://www.biorxiv.org/content/10.1101/2022.06.17.496528v1
 
 
 ## Project Structure
@@ -12,7 +12,7 @@ This repository is structured as follows:
 
 ```shell
 Analysis type
-└── data/            # directory where all external and intermediata data is stored
+└── data/            # directory where all external agloblata data is stored
      
 └── code/            # directory where all the code is stored
    
@@ -23,7 +23,7 @@ Analysis type
 ├── README.md        # this file
 └── environment_analysisA.yaml # Anaconda environment YAML file for specific analysis "karyotype", "driver_enrichment_and_actionability" & "hartwig_pipeline_validation"
 └── environment_analysisB.yaml # Anaconda environment YAML file for specific analysis "SBS1_mutrate" and "TEDs"
-└── environment_snakemake.yaml # Anaconda environment YAML file for snakemake scripts
+└  environment_snakemake.yaml # Anaconda environment YAML file for snakemake scripts
 ```
 
 ## Data access
