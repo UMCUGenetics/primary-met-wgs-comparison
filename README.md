@@ -11,9 +11,9 @@ This repository contains all the data and analysis related to the manuscript: ht
 This repository is structured as follows:
 
 ```shell
-Analysis type
+Analysis-type
 └── data/            # directory where all external agloblata data is stored
-     
+    
 └── code/            # directory where all the code is stored
    
 └── results/
@@ -23,7 +23,7 @@ Analysis type
 ├── README.md        # this file
 └── environment_analysisA.yaml # Anaconda environment YAML file for specific analysis "karyotype", "driver_enrichment_and_actionability" & "hartwig_pipeline_validation"
 └── environment_analysisB.yaml # Anaconda environment YAML file for specific analysis "SBS1_mutrate" and "TEDs"
-└  environment_snakemake.yaml # Anaconda environment YAML file for snakemake scripts
+└── environment_snakemake.yaml # Anaconda environment YAML file for snakemake scripts
 ```
 
 ## Data access
