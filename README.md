@@ -1,9 +1,9 @@
 # 'Pan-cancer whole genome comparison of primary and metastatic solid tumors' 
 
-## :warning::warning:Repository under construction.
+This repository contains all the data and analysis related to the manuscript: https://www.nature.com/articles/s41586-023-06054-z
 
-
-This repository contains all the data and analysis related to the manuscript: https://www.biorxiv.org/content/10.1101/2022.06.17.496528v1
+Preprint: 
+https://www.biorxiv.org/content/10.1101/2022.06.17.496528v1
 
 
 ## Project Structure
